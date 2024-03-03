@@ -1,64 +1,67 @@
+from GUI.GUI import txtEntry
+from GUI.GUI import txtOutput
+
 def binaire_decimal():
-    h = str(bina.get())
-    puissance = 0
+    toConvert = str(txtEntry.get())
+    potency = 0
     total = 0
-    for i in range(len(h) - 1, -1, -1):
+    for i in range(len(toConvert) - 1, -1, -1):
         if i != 0 and i != 1:
-            assert False, ("La valeur entrée n'est pas du binaire !")
-        total += int(h[i]) * (2 ** puissance)
-        puissance += 1
-    return dec.set(str(total))
+            assert False, "The value entered is not binary !"
+        total += int(toConvert[i]) * (2 ** potency)
+        potency += 1
+    return txtOutput.set(str(total))
 
 
 def hexa_decim():
-    hexadecimal = str(hexa.get())
+    toConvert = str(txtEntry.get())
     conversion_table = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'A': 10,
                         'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
     decimal = 0
-    puissance = len(hexadecimal) - 1
-    for digit in hexadecimal:
-        decimal += conversion_table[digit] * 16 ** puissance
-        puissance -= 1
-    return dec.set(str(decimal))
+    potency = len(toConvert) - 1
+    for digit in toConvert:
+        decimal += conversion_table[digit] * 16 ** potency
+        potency -= 1
+    return txtOutput.set(str(decimal))
 
 
 def decimal_to_hexa():
     conversion_table = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
-    decimal = int(dec.get())  # l'assert est déjà fait avce la transfaormation en int
+    toConvert = int(txtEntry.get())  # l'assert est déjà fait avce la transfaormation en int
     hexadecimal = ''
 
-    while decimal > 0:
-        remainder = decimal % 16
+    while toConvert > 0:
+        remainder = toConvert % 16
         hexadecimal = conversion_table[remainder] + hexadecimal
-        decimal = decimal // 16
+        toConvert = toConvert // 16
 
-    return hexa.set(str(hexadecimal))
+    return txtOutput.set(str(hexadecimal))
 
 
 def decim_binair():
-    decimal = int(dec.get())
+    toConvert = int(txtEntry.get())
     binary = 0
     ctr = 0
-    temp = decimal
+    temp = toConvert
     while (temp > 0):
         binary = ((temp % 2) * (10 ** ctr)) + binary
         temp = int(temp / 2)
         ctr += 1
     rep = binary
-    return bina.set(str(rep))
+    return txtOutput.set(str(rep))
 
 
 def binair_hexa():
-    bnum = int(bina.get())
-    if bnum != 0 and bnum != 1:
-        assert False, ("Attention, ce n'est pas du binaire !")
+    toConvert = int(txtEntry.get())
+    if toConvert != 0 and toConvert != 1:
+        assert False, "The value entered is not binary !"
     hex = 0
     mul = 1
     chk = 1
     i = 0
     hnum = []
-    while bnum != 0:
-        rem = bnum % 10
+    while toConvert != 0:
+        rem = toConvert % 10
         hex = hex + (rem * mul)
         if chk % 4 == 0:
             if hex < 10:
@@ -72,7 +75,7 @@ def binair_hexa():
         else:
             mul = mul * 2
             chk = chk + 1
-        bnum = int(bnum / 10)
+        toConvert = int(toConvert / 10)
     if chk != 1:
         hnum.insert(i, chr(hex + 48))
     if chk == 1:
@@ -82,18 +85,18 @@ def binair_hexa():
         print(end=hnum[i])
         i = i - 1
 
-    return hexa.set(hnum)
+    return txtOutput.set(str(hnum))
 
 
 def hexa_bin():
-    hexadecimal = str(hexa.get())
+    toConvert = str(txtEntry.get())
     conversion_table = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'A': 10,
                         'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
     decimal = 0
-    puissance = len(hexadecimal) - 1
-    for digit in hexadecimal:
-        decimal += conversion_table[digit] * 16 ** puissance
-        puissance -= 1
+    potency = len(toConvert) - 1
+    for digit in toConvert:
+        decimal += conversion_table[digit] * 16 ** potency
+        potency -= 1
 
     binary = 0
     ctr = 0
@@ -103,7 +106,7 @@ def hexa_bin():
         temp = int(temp / 2)
         ctr += 1
     rep = binary
-    return bina.set(str(rep))
+    return txtOutput.set(str(rep))
 
 
 
