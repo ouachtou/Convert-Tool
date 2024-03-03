@@ -1,5 +1,4 @@
-from GUI.GUI import txtEntry
-from GUI.GUI import txtOutput
+from GUI.GUI import *
 
 def binaire_decimal():
     toConvert = str(txtEntry.get())
