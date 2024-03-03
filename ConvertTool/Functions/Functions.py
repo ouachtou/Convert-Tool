@@ -1,7 +1,3 @@
-from math import *
-
-import GUI
-from GUI import *
 def binaire_decimal():
     h = str(bina.get())
     puissance = 0
