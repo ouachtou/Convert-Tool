@@ -3,6 +3,9 @@ from tkinter import *  # import de la bibliothèque graphique
 import tkinter as tk
 from tkinter import ttk
 
+from Controller.Converting import converting
+
+
 def GUI(command):
     Window = Tk()
     Window.title('ConverTool')
@@ -34,7 +37,7 @@ def GUI(command):
     txtEntry.pack()
 
     #------------------ConvertButton------------------#
-    Button(text='-->', command=command).pack()
+    Button(text='-->', command=converting).pack()
 
 
     #------------------Converted------------------#
