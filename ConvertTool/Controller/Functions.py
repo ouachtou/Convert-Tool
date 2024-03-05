@@ -4,15 +4,11 @@ def binaire_decimal():
     toConvert = str(GUI.GUI.txtEntry.get())
     potency = 0
     total = 0
-    print(str(total))
     for i in range(len(toConvert) - 1, -1, -1):
-        print(i)
-        print(toConvert[i])
         if toConvert[i] != '0' and toConvert[i] != '1':
             return 'The value entered is not binary !'
         total += int(toConvert[i]) * (2 ** potency)
         potency += 1
-    print(str(total))
     return GUI.GUI.txtO.set(str(total))
 
 
@@ -55,40 +51,40 @@ def decim_binair():
 
 
 def binair_hexa():
-    toConvert = int(GUI.GUI.txtEntry.get())
-    if toConvert != 0 and toConvert != 1:
-        return "The value entered is not binary !"
-    hex = 0
-    mul = 1
-    chk = 1
-    i = 0
-    hnum = []
-    while toConvert != 0:
-        rem = toConvert % 10
-        hex = hex + (rem * mul)
-        if chk % 4 == 0:
-            if hex < 10:
-                hnum.insert(i, chr(hex + 48))
-            else:
-                hnum.insert(i, chr(hex + 55))
-            mul = 1
-            hex = 0
-            chk = 1
-            i = i + 1
-        else:
-            mul = mul * 2
-            chk = chk + 1
-        toConvert = int(toConvert / 10)
-    if chk != 1:
-        hnum.insert(i, chr(hex + 48))
-    if chk == 1:
-        i = i - 1
+    toConvert = str(GUI.GUI.txtEntry.get())
 
-    while i >= 0:
-        print(end=hnum[i])
-        i = i - 1
+    for i in range(len(toConvert) - 1, -1, -1):
+        if toConvert[i] != '0' and toConvert[i] != '1':
+            return 'The value entered is not binary !'
+    # Dictionnaire pour la correspondance des chiffres hexadécimaux
+    hex_dict = {
+        '0000': '0', '0001': '1', '0010': '2', '0011': '3',
+        '0100': '4', '0101': '5', '0110': '6', '0111': '7',
+        '1000': '8', '1001': '9', '1010': 'A', '1011': 'B',
+        '1100': 'C', '1101': 'D', '1110': 'E', '1111': 'F'
+    }
 
-    return GUI.GUI.txtO.set(str(hnum))
+    # Assurer que la longueur du nombre binaire est un multiple de 4
+    while len(toConvert) % 4 != 0:
+        toConvert = '0' + toConvert
+
+    # Diviser le nombre binaire en groupes de 4 chiffres
+    groups_of_four = [toConvert[i:i + 4] for i in range(0, len(toConvert), 4)]
+
+    # Convertir chaque groupe de 4 chiffres en sa représentation hexadécimale correspondante
+    hex_num = ''.join(hex_dict[group] for group in groups_of_four)
+
+    # Supprimer les zéros inutiles à gauche
+    hex_num = hex_num.lstrip('0')
+
+    # Ajouter '0' s'il n'y en a pas
+    if not hex_num:
+        hex_num = '0'
+
+    # Retourner le résultat
+    return GUI.GUI.txtO.set(str(hex_num))
+
+    
 
 
 def hexa_bin():
