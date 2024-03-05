@@ -1,19 +1,23 @@
+import GUI.GUI
 from GUI.GUI import *
-
 def binaire_decimal():
-    toConvert = str(txtEntry.get())
+    toConvert = str(GUI.GUI.txtEntry.get())
     potency = 0
     total = 0
+    print(str(total))
     for i in range(len(toConvert) - 1, -1, -1):
-        if i != 0 and i != 1:
-            assert False, "The value entered is not binary !"
+        print(i)
+        print(toConvert[i])
+        if toConvert[i] != '0' and toConvert[i] != '1':
+            return 'The value entered is not binary !'
         total += int(toConvert[i]) * (2 ** potency)
         potency += 1
-    return txtOutput.set(str(total))
+    print(str(total))
+    return GUI.GUI.txtO.set(str(total))
 
 
 def hexa_decim():
-    toConvert = str(txtEntry.get())
+    toConvert = str(GUI.GUI.txtEntry.get())
     conversion_table = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'A': 10,
                         'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
     decimal = 0
@@ -21,12 +25,12 @@ def hexa_decim():
     for digit in toConvert:
         decimal += conversion_table[digit] * 16 ** potency
         potency -= 1
-    return txtOutput.set(str(decimal))
+    return GUI.GUI.txtO.set(str(decimal))
 
 
 def decimal_to_hexa():
     conversion_table = ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F']
-    toConvert = int(txtEntry.get())  # l'assert est déjà fait avce la transfaormation en int
+    toConvert = int(GUI.GUI.txtEntry.get())  # l'assert est déjà fait avce la transfaormation en int
     hexadecimal = ''
 
     while toConvert > 0:
@@ -34,11 +38,11 @@ def decimal_to_hexa():
         hexadecimal = conversion_table[remainder] + hexadecimal
         toConvert = toConvert // 16
 
-    return txtOutput.set(str(hexadecimal))
+    return GUI.GUI.txtO.set(str(hexadecimal))
 
 
 def decim_binair():
-    toConvert = int(txtEntry.get())
+    toConvert = int(GUI.GUI.txtEntry.get())
     binary = 0
     ctr = 0
     temp = toConvert
@@ -47,13 +51,13 @@ def decim_binair():
         temp = int(temp / 2)
         ctr += 1
     rep = binary
-    return txtOutput.set(str(rep))
+    return GUI.GUI.txtO.set(str(rep))
 
 
 def binair_hexa():
-    toConvert = int(txtEntry.get())
+    toConvert = int(GUI.GUI.txtEntry.get())
     if toConvert != 0 and toConvert != 1:
-        assert False, "The value entered is not binary !"
+        return "The value entered is not binary !"
     hex = 0
     mul = 1
     chk = 1
@@ -84,11 +88,11 @@ def binair_hexa():
         print(end=hnum[i])
         i = i - 1
 
-    return txtOutput.set(str(hnum))
+    return GUI.GUI.txtO.set(str(hnum))
 
 
 def hexa_bin():
-    toConvert = str(txtEntry.get())
+    toConvert = str(GUI.GUI.txtEntry.get())
     conversion_table = {'0': 0, '1': 1, '2': 2, '3': 3, '4': 4, '5': 5, '6': 6, '7': 7, '8': 8, '9': 9, 'A': 10,
                         'B': 11, 'C': 12, 'D': 13, 'E': 14, 'F': 15}
     decimal = 0
@@ -105,7 +109,7 @@ def hexa_bin():
         temp = int(temp / 2)
         ctr += 1
     rep = binary
-    return txtOutput.set(str(rep))
+    return GUI.GUI.txtO.set(str(rep))
 
 
 

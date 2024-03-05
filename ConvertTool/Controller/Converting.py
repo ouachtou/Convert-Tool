@@ -1,13 +1,9 @@
 from Controller.Functions import *
-from GUI.GUI import listEntry
-from GUI.GUI import listOutput
-
-
-
 
 def converting():
-    entryChoice = listEntry.get()
-    outputChoice = listOutput.get()
+    import GUI.GUI
+    entryChoice = GUI.GUI.listEntry.get()
+    outputChoice = GUI.GUI.listOutput.get()
 
     if entryChoice == "binary":
         if outputChoice == "decimal":

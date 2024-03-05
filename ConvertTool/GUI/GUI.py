@@ -6,7 +6,20 @@ from tkinter import ttk
 from Controller.Converting import converting
 
 
-def GUI(command):
+listEntry = []
+listOutput = []
+txtEntry = ""
+txtOutput = ""
+txtO = ''
+txtE = ''
+def GUI():
+    global listEntry
+    global listOutput
+    global txtEntry
+    global txtOutput
+    global txtO
+    global txtE
+
     Window = Tk()
     Window.title('ConverTool')
     Window.geometry('500x300')
@@ -30,10 +43,11 @@ def GUI(command):
     listOutput.current(1)
     listOutput.pack()
 
+
     #------------------ToConvert------------------#
-    txt = StringVar()
-    txt.set("Number to convert")
-    txtEntry = Entry(Window, textvariable= txt)
+    txtE = StringVar()
+    txtE.set("Number to convert")
+    txtEntry = Entry(Window, textvariable= txtE)
     txtEntry.pack()
 
     #------------------ConvertButton------------------#
@@ -41,9 +55,9 @@ def GUI(command):
 
 
     #------------------Converted------------------#
-    txt = StringVar()
-    txt.set("Output")
-    txtOutput = Entry(Window, textvariable= txt)
+    txtO = StringVar()
+    txtO.set("Output")
+    txtOutput = Entry(Window, textvariable= txtO)
     txtOutput.pack()
 
     #------------------Leave------------------#
