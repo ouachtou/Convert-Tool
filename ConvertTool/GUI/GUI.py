@@ -61,4 +61,3 @@ def GUI():
     leaveButton.place(x=400, y=250)
 
     Window.mainloop()
-
